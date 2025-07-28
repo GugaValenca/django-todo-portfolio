@@ -31,7 +31,7 @@
 > *(Add your screenshots in the `screenshots` folder and link them here)*  
 Example:
 ![Home Page](screenshots/home.png)
-![Task List](screenshots/task-list.png)
+
 
 ---
 
