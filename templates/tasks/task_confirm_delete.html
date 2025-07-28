@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Excluir Tarefa - To-Do List{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-danger text-white">
+                <h4 class="mb-0">
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    Confirmar Exclusão
+                </h4>
+            </div>
+            <div class="card-body">
+                <p class="mb-4">
+                    Tem certeza que deseja excluir a tarefa <strong>"{{ task.title }}"</strong>?
+                </p>
+                
+                {% if task.description %}
+                    <div class="alert alert-light">
+                        <strong>Descrição:</strong> {{ task.description|truncatewords:30 }}
+                    </div>
+                {% endif %}
+                
+                <div class="alert alert-warning">
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    Esta ação não pode ser desfeita!
+                </div>
+                
+                <form method="post" class="d-flex justify-content-between">
+                    {% csrf_token %}
+                    <a href="{% url 'task-list' %}" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left me-2"></i>
+                        Cancelar
+                    </a>
+                    <button type="submit" class="btn btn-danger">
+                        <i class="fas fa-trash me-2"></i>
+                        Sim, Excluir
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

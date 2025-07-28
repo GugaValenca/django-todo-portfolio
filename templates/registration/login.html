@@ -1,0 +1,56 @@
+{% extends 'base.html' %} {% block title %}Login - To-Do List{% endblock %} {%
+block content %}
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header text-center">
+        <h3 class="mb-0">
+          <i class="fas fa-sign-in-alt me-2"></i>
+          Entrar
+        </h3>
+      </div>
+      <div class="card-body">
+        <form method="post">
+          {% csrf_token %} {% if form.errors %}
+          <div class="alert alert-danger">{{ form.errors }}</div>
+          {% endif %}
+
+          <div class="mb-3">
+            <label for="id_username" class="form-label">Usuário</label>
+            <input
+              type="text"
+              name="username"
+              class="form-control"
+              id="id_username"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="id_password" class="form-label">Senha</label>
+            <input
+              type="password"
+              name="password"
+              class="form-control"
+              id="id_password"
+              required
+            />
+          </div>
+
+          <div class="d-grid mb-3">
+            <button type="submit" class="btn btn-primary">
+              <i class="fas fa-sign-in-alt me-2"></i>
+              Entrar
+            </button>
+          </div>
+        </form>
+
+        <div class="text-center">
+          <p class="mb-0">Não tem uma conta?</p>
+          <a href="{% url 'register' %}" class="btn btn-link"> Criar conta </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
